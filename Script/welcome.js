@@ -1,4 +1,6 @@
 function welcome(){
+	
+
 	if (canvas.width != window.innerWidth || canvas.height != window.innerHeight) window.location.reload();
 
 	canvas.width = window.innerWidth;

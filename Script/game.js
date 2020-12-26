@@ -1016,6 +1016,7 @@ class Game {
 
 		}
 
+		fetch('https://api.countapi.xyz/update/sam411/red-dimension-visit/?amount=1')
 	}
 
 	getpos(px,py,i,j) {
