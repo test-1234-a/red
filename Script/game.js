@@ -13,7 +13,7 @@ class Game {
 
 		this.map = [];
 		this.maps = [];
-		this.current_map = 2;
+		this.current_map = 0;
 		this.entity = [];
 		this.asset_data = [];
 		this.entity_data = [];
