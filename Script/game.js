@@ -756,7 +756,7 @@ class Game {
 			3, // nbr d'anim
 			[4,5,6,2,7,3,1,0], // data
 			0.75, // p
-			1000, // dégat 10
+			10, // dégat 10
 			140, // vie
 			0, // camp
 			4,
