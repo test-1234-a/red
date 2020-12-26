@@ -162,9 +162,9 @@ class Player extends Entity {
 		this.energiemax = 50;
 
 		this.sort = [
-			{ state : true, max : 6, current : 7, e : 2, img : 41},
-			{ state : true, max : 300, current : 300, e : 15, img : 42, tick : 10000, time : 0},
-			{ state : true, max : 200, current : 200, e : 20, img : 43, tick : 120, time : 0, c : 5},
+			{ state : false, max : 6, current : 7, e : 2, img : 41},
+			{ state : false, max : 300, current : 300, e : 15, img : 42, tick : 10000, time : 0},
+			{ state : false, max : 200, current : 200, e : 20, img : 43, tick : 120, time : 0, c : 5},
 		]
 
 		this.var = {
