@@ -118,7 +118,7 @@ class Formes extends Asset {
 
 	update(x,y,z,t) {
 		// génération de la forme
-		if (game.reload || this.forme == 0 || this.forme == 1) this.base();
+		if (game.reload == true || this.forme == 0 || this.forme == 1) this.base();
 
 		// calcul positions
 		this.h = game.s*(this.size/10);
@@ -272,9 +272,10 @@ class Pieces extends Animations {
 	collision_entity(e){
 		if (e == player) {
 			player.gold += 1;
+			game.audio[7].play();
 			game.map[player.px][player.py].splice(game.map[player.px][player.py].length-1,1);
 		}
-		game.audio[7].play();
+
 	}
 
 }
@@ -372,6 +373,7 @@ class Teleportations extends Formes {
 			}
 		}
 
+		game.reload = true;
 		player.x = 0;
 		player.y = 0;
 

@@ -411,6 +411,7 @@ class Game {
 			keycode = 0;
 			if (tp) {
 				this.current_map = destination;
+				game.reload = true;
 				game.update();
 			} else {
 				this.ui.time = Date.now();

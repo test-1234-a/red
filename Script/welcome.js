@@ -1,4 +1,8 @@
 function welcome(){
+	ctx.fillStyle = 'black'
+  ctx.font = 1 + 'px Arial';
+  ctx.textAlign = 'center';
+  ctx.fillText("x",window.innerWidth,window.innerHeight/2.2);
 
 	if (canvas.width != window.innerWidth || canvas.height != window.innerHeight) window.location.reload();
 
