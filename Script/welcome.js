@@ -1,5 +1,4 @@
 function welcome(){
-	
 
 	if (canvas.width != window.innerWidth || canvas.height != window.innerHeight) window.location.reload();
 
@@ -21,7 +20,7 @@ function welcome(){
 		ctx.strokeStyle = 'rgba(60,60,60,1)';
 	 } else {
 		ctx.strokeStyle = 'black'; ctx.fillStyle = 'black';
-		if (clic == 0 && mousex > window.innerWidth/4-w/2 && mousex < window.innerWidth/4+w/2 && mousey > window.innerHeight/2-h/2 && mousey < window.innerHeight/2+h/2) game.state = 2;
+		if (clic == 0 && mousex > window.innerWidth/4-w/2 && mousex < window.innerWidth/4+w/2 && mousey > window.innerHeight/2-h/2 && mousey < window.innerHeight/2+h/2) game.state = 3;
 	};
 	ctx.strokeRect(window.innerWidth/4-w/2,window.innerHeight/2-h/2,w,h)
 	ctx.lineWidth = 1;
@@ -59,9 +58,9 @@ var settings = [
 	{ id : 'music', x : window.innerWidth*0.91, y : window.innerHeight*0.35, state : false},
 	{ id : 'son', x : window.innerWidth*0.91, y : window.innerHeight*0.41, state : false},
 
-	{ id : 'haut', x : window.innerWidth*0.71, y : window.innerHeight*0.585, state : 'H'},
-	{ id : 'bas', x : window.innerWidth*0.71, y : window.innerHeight*0.645, state : 'B'},
-	{ id : 'gauche', x : window.innerWidth*0.91, y : window.innerHeight*0.585, state : 'G'},
+	{ id : 'haut', x : window.innerWidth*0.71, y : window.innerHeight*0.585, state : 'Z'},
+	{ id : 'bas', x : window.innerWidth*0.71, y : window.innerHeight*0.645, state : 'S'},
+	{ id : 'gauche', x : window.innerWidth*0.91, y : window.innerHeight*0.585, state : 'Q'},
 	{ id : 'droite', x : window.innerWidth*0.91, y : window.innerHeight*0.645, state : 'D'},
 
 	{ id : 'int', x : window.innerWidth*0.71, y : window.innerHeight*0.705, state : '↳'},

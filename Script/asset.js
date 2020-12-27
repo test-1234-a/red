@@ -118,7 +118,7 @@ class Formes extends Asset {
 
 	update(x,y,z,t) {
 		// génération de la forme
-		this.base();
+		if (game.reload || this.forme == 0 || this.forme == 1) this.base();
 
 		// calcul positions
 		this.h = game.s*(this.size/10);

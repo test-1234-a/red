@@ -21,9 +21,9 @@ class Game {
 		this.ui = {type : 0};
 
 		this.time = Date.now();
-		this.tick = 50;
+		this.tick = 60;
 		this.anime = true;
-
+		this.reload = true;
 		this.state = 1;
 
 		this.option = { aff : window.innerHeight/2 }
@@ -44,7 +44,10 @@ class Game {
 		}
 		// -------------- Gestion map --------------
 
-		if (this.s != Math.round(window.innerHeight/9)) this.s = Math.round(window.innerHeight/9)
+		if (this.s != Math.round(window.innerHeight/9)) {
+			this.s = Math.round(window.innerHeight/9)
+			game.reload = true;
+		}
 		var tp = true;
 
 
@@ -109,6 +112,7 @@ class Game {
 					t2 : text.tuto2b,
 					t3 : text.tuto2c,
 				}
+				// fetch('https://api.countapi.xyz/update/sam411/red-dimension-visit/?amount=1')
 				player.tuto.m2 = false;
 			}
 			break;
@@ -139,9 +143,6 @@ class Game {
 					this.entity[this.current_map][this.entity[this.current_map].length-1].px = 3;
 					this.entity[this.current_map][this.entity[this.current_map].length-1].py = 3;
 					this.entity[this.current_map].push(clone(game.entity_data[1]));
-					this.entity[this.current_map][this.entity[this.current_map].length-1].px = 7;
-					this.entity[this.current_map][this.entity[this.current_map].length-1].py = 14;
-					this.entity[this.current_map].push(clone(game.entity_data[0]));
 					this.entity[this.current_map][this.entity[this.current_map].length-1].px = 14;
 					this.entity[this.current_map][this.entity[this.current_map].length-1].py = 7;
 				} else {
@@ -398,6 +399,7 @@ class Game {
 
 		// reset
 		this.current_clavier = 0;
+		game.reload = false;
 		clic = -1;
 		keycode = 0;
 	}
@@ -676,6 +678,10 @@ class Game {
 		new Images('pierre',2,51); // 61
 		new Images('pierre',2,52); // 62
 
+		new Cadavres("cadavre d'arraigné",3,38,1) // 63
+		new Cadavres("cadavre de gobelin",3,34,1) // 64
+		new Cadavres("cadavre de chef gobelin",3,34,2) // 65
+
 		// --------
 
 		new Monster('gobelin',	// 0
@@ -693,7 +699,7 @@ class Game {
 			35, // img atk
 			2, // nb img atk
 			5, // son mort
-			34, // img mort
+			64, // img mort
 		);
 
 		new Monster('spider',	// 1
@@ -711,7 +717,7 @@ class Game {
 			37, // img atk
 			4, // nb img atk
 			4, // son mort
-			38, // img mort
+			63, // img mort
 		);
 
 		new Monster('clone',	// 2
@@ -746,7 +752,7 @@ class Game {
 			35, // img atk
 			2, // nb img atk
 			5, // son mort
-			34, // img mort
+			65, // img mort
 		);
 		// --------
 
@@ -757,7 +763,7 @@ class Game {
 			[4,5,6,2,7,3,1,0], // data
 			0.75, // p
 			10, // dégat 10
-			140, // vie
+			100, // vie
 			0, // camp
 			4,
 		);
@@ -1016,7 +1022,7 @@ class Game {
 
 		}
 
-		fetch('https://api.countapi.xyz/update/sam411/red-dimension-visit/?amount=1')
+
 	}
 
 	getpos(px,py,i,j) {
@@ -1229,13 +1235,27 @@ function sqr(a) {
 }
 
 function sauvegarde() {
-	save.map = clone(game.map);
-	save.maps = clone(game.maps);
+
+	save.maps = [];
+	for (var i = 0; i < game.maps.length; i++) {
+		save.maps[i] = [];
+		for (var x = 0; x < game.maps[i].length; x++) {
+			save.maps[i][x] = [];
+			for (var y = 0; y < game.maps[i][x].length; y++) {
+				save.maps[i][x][y] = [];
+				for (var z = 0; z < game.maps[i][x][y].length; z++) {
+					if (game.maps[i][x][y][z].img) { save.maps[i][x][y][z] = clone(game.maps[i][x][y][z]); console.log("l")}
+					else { save.maps[i][x][y][z] = game.maps[i][x][y][z]; }
+				}
+			}
+		}
+	}
+
 	save.current_map = game.current_map;
 	for (var m = 0; m < game.maps.length; m++) {
 		save.entity[m] = [player];
 		for (var i = 1; i < game.entity[m].length; i++) {
-				save.entity[m][i] = clone(game.entity[m][i]);
+				save.entity[m][i] = clone(game.entity[m][i])
 		}
 	}
 	save.vie = player.vie;
@@ -1255,13 +1275,27 @@ function sauvegarde() {
 }
 
 function loadgame() {
-	game.map = clone(save.map);
-	game.maps = clone(save.maps);
+
+	game.maps = [];
+	for (var i = 0; i < save.maps.length; i++) {
+		game.maps[i] = [];
+		for (var x = 0; x < save.maps[i].length; x++) {
+			game.maps[i][x] = [];
+			for (var y = 0; y < save.maps[i][x].length; y++) {
+				game.maps[i][x][y] = [];
+				for (var z = 0; z < save.maps[i][x][y].length; z++) {
+					if (save.maps[i][x][y][z].img) { game.maps[i][x][y][z] = clone(save.maps[i][x][y][z]);}
+					else { game.maps[i][x][y][z] = save.maps[i][x][y][z]; }
+				}
+			}
+		}
+	}
+
 	game.current_map = save.current_map;
-	for (var m = 0; m < save.maps.length; m++) {
+	for (var m = 0; m < game.maps.length; m++) {
 		game.entity[m] = [player];
 		for (var i = 1; i < save.entity[m].length; i++) {
-				game.entity[m][i] = clone(save.entity[m][i]);
+			game.entity[m][i] = clone(save.entity[m][i])
 		}
 	}
 	game.ui = {type : 0};

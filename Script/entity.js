@@ -331,7 +331,7 @@ class Monster extends Entity {
 
 			if (this.img_death) {
 				if (game.map[this.px][this.py][game.map[this.px][this.py].length-1].text != 'feu de camp') {
-					game.map[this.px][this.py].push(new Cadavres('cadavre de ' + this.text,3,this.img_death,this.pro));
+					game.map[this.px][this.py].push(clone(game.asset_data[this.img_death]));
 				}
 			}
 

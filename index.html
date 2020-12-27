@@ -13,6 +13,10 @@
           font-family: 'KulminoituvaRegular';
           src: url('Font/Aguda Bold.ttf');
       }
+      @font-face {
+          font-family: 'Arial';
+          src: url('Font/OldLondon.ttf');
+      }
     </style>
     <link rel="icon" type="png" href="Image/Interface/logo.png" />
   </head>
@@ -22,6 +26,7 @@
     <script src="Script/game.js" type="text/javascript"></script>
     <script src="Script/welcome.js" type="text/javascript"></script>
     <script src="Script/lang.js" type="text/javascript"></script>
+    <script src="Script/introduction.js" type="text/javascript"></script>
 
     <script src="Script/asset.js" type="text/javascript"></script>
     <script src="Script/entity.js" type="text/javascript"></script>
@@ -53,8 +58,8 @@
       game.load_img(['Interface/icon_energy.png','Interface/icon_heart.png','Decors/windows.png','Decors/obstacle.png','Entity/Gobelin/corpse.png','Entity/Gobelin/attack.png','Decors/sign.png','Entity/Spider/attack.png','Entity/Spider/corpse.png','Entity/Clone/clone.png'])
       //                  40                               41                         42                     43                 44                        45                               46                     47                 48                      49
       game.load_img(['Decors/chest_Closed_Left.png','Interface/spell_1.png','Interface/spell_2.png','Interface/spell_3.png','Animation/heal.png','Decors/chest_Open_Left.png','Animation/campfire.png','Interface/clock.png','Decors/obstacle2.png','Decors/grass.png'])
-      //                50                      51           52                   53
-      game.load_img(['Decors/plant.png','Decors/stone2.png','Decors/bridge.png','Interface/background2.png'])
+      //                50                      51           52                   53                             54                         55                   56                   57                    58                  59
+      game.load_img(['Decors/plant.png','Decors/stone2.png','Decors/bridge.png','Interface/background2.png','Interface/background3.png','Interface/box.png','Interface/nav.png','Interface/god.png','Interface/logo.png','Interface/baby.png'])
       // ---            0                    1       2          3              4                5                6              7            8             9         10       11       12
       game.load_audio(['background.mp3','error.mp3','heal.mp3','clone_death.mp3','spider_death.mp3','goblin_death.mp3','switch.mp3','coin.mp3','new_spell.mp3','clone.mp3','hit.mp3','fire.mp3','flame.mp3']);
 
