@@ -84,10 +84,11 @@ function option(){
 			if (settings[i].id == 'music') {
 					settings[i].state = !settings[i].state;
 					game.audio[0].muted = settings[i].state;
+					game.audio[13].muted = settings[i].state;
 			}
 			if (settings[i].id == 'son') {
 				settings[i].state = !settings[i].state;
-				for (var j = 1; j < game.audio.length; j++) {
+				for (var j = 1; j < game.audio.length-1; j++) {
 					game.audio[j].muted = settings[i].state;
 				}
 			}
