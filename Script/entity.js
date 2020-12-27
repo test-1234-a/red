@@ -168,9 +168,10 @@ class Player extends Entity {
 		]
 
 		this.var = {
-			a : false, // accès moulin
-			b : false, // pont map boss
-			vague : 0, // vague map 4
+			a : false, // accès moulin map 2
+			b : false, // pont map 10
+			c : false, // piece map 9
+			vague : 0, // vague map 8
 		}
 
 		this.tuto = {

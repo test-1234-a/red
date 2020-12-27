@@ -205,6 +205,15 @@ class Switchs extends Images {
 				}
 			}
 
+			if (!player.var.c && game.current_map == 9) {
+				game.map[3][3].push(clone(game.asset_data[9]));
+				game.map[8][7].splice(1,1);
+				game.entity[game.current_map].push(clone(game.entity_data[1]));
+				game.entity[game.current_map][game.entity[game.current_map].length-1].px = 3;
+				game.entity[game.current_map][game.entity[game.current_map].length-1].py = 3;
+				player.var.c = true;
+			}
+
 			game.audio[6].play();
 			game.audio[6].volume = 0.65;
 			this.state = !this.state;
@@ -232,7 +241,6 @@ class Doors extends Formes {
 		if (!this.state) {
 			this.size = 0;
 			this.color = 'rgba(0,0,0,0)';
-			this.ini = true;
 		}
 
 	}
@@ -488,15 +496,30 @@ class Signs extends Images {
 	}
 
 	collision_clavier(){
-		game.ui = {
-			type : 2,
-			img : this.img,
-			t1 : "",
-			t2 : "",
-			t3 : text.pancarte,
-			t4 : "",
-			t5 : "",
+		if (game.current_map == 4) {
+			game.ui = {
+				type : 2,
+				img : this.img,
+				t1 : "",
+				t2 : "",
+				t3 : text.pancarte,
+				t4 : "",
+				t5 : "",
+			}
 		}
+
+		if (game.current_map == 9) {
+			game.ui = {
+				type : 2,
+				img : this.img,
+				t1 : "",
+				t2 : "",
+				t3 : text.pancarte2,
+				t4 : "",
+				t5 : "",
+			}
+		}
+
 	}
 
 }
